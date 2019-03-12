@@ -6,7 +6,9 @@ class Zhihu extends React.Component {
   }
 
   render() {
-    return <div>知乎者也</div>;
+    return (<div>
+      {/* 包含，发布，认同，不认同，评论，展开，收起，发布等功能 */}
+    </div>);
   }
 }
 
