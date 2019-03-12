@@ -1,0 +1,30 @@
+.header,
+.category {
+    font-weight: bold;
+}
+
+.row-title {
+    width: 100px;
+}
+
+.row-data {
+    flex: 1;
+}
+
+.product-table,
+.search-bar {
+    width: 300px;
+}
+
+.search-bar {
+    margin-top: 60px;
+}
+
+.serach-flag {
+    display: block;
+    cursor: pointer;
+}
+
+.serach-flag input {
+    margin: 0;
+}
