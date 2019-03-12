@@ -1,5 +1,6 @@
 import React from "react";
 import "./search.css";
+import { getGoods } from "../api/index";
 
 function ProductRow(props) {
   return (
@@ -38,7 +39,7 @@ function ProductTable(props) {
 
   return (
     <div className="product-table">
-      <div className="header flex">
+      <div className="table-header flex">
         <div className="row-title">Name</div>
         <div className="row-data">Price</div>
       </div>
@@ -142,4 +143,35 @@ function throttle(fn, delay) {
   };
 }
 
-export default FilterableProductTable;
+function withWrap(WrappedComponent) {
+  return class extends React.Component {
+    constructor() {
+      super();
+      this.state = {
+        data: []
+      };
+    }
+
+    componentDidMount() {
+      getGoods()
+        .then(data => {
+          this.setState({
+            data: data.data.goods
+          });
+        })
+        .catch(err => {
+          console.log("load data error!");
+        });
+    }
+
+    render() {
+      if (!this.state.data || this.state.data.length === 0) {
+        return <div>Loading Data, Please Wait for Seconds······</div>;
+      } else {
+        return <WrappedComponent products={this.state.data} />;
+      }
+    }
+  };
+}
+
+export default withWrap(FilterableProductTable);

@@ -1,0 +1,105 @@
+body {
+    font: 14px "Century Gothic", Futura, sans-serif;
+    margin: 0;
+}
+
+
+body,
+html {
+    height: 100%;
+}
+
+ol,
+ul {
+    padding-left: 30px;
+    list-style: none;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.root {
+    min-height: 100%;
+    box-sizing: border-box;
+    padding: 60px 14px 70px;
+    position: relative;
+}
+
+.header {
+    background-color: #20232a;
+    color: #ffffff;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+
+.header-wrap {
+    height: 50px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.header-wrap,
+.content {
+    margin: 0 auto;
+    width: 1048px;
+}
+
+.logo {
+    width: 130px;
+    text-align: left;
+    color: #61dafb;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 50px;
+}
+
+.nav {
+    padding: 0;
+    margin: 0;
+
+    a {
+        cursor: pointer;
+        color: #ffffff;
+        transition: color 0.2s ease-out;
+        padding-left: 15px;
+        padding-right: 15px;
+        height: 50px;
+        box-sizing: border-box;
+        font-weight: 300;
+        text-decoration: none;
+        border-bottom: 2px solid #20232a;
+
+        &.active {
+            color: #61dafb;
+            border-bottom-color: #61dafb;
+        }
+    }
+}
+
+
+.footer {
+    font-size: 13px;
+    height: 60px;
+    line-height: 60px;
+    color: #888;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
