@@ -1,3 +1,10 @@
+const ActionType = {
+  like: "like",
+  thank: "thank",
+  collection: "collection",
+  diss: "diss"
+};
+
 function formatNum(num) {
   if (num < 1000) {
     return num;
@@ -8,4 +15,4 @@ function formatNum(num) {
 
 function formatDate(date) {}
 
-export { formatNum, formatDate };
+export { formatNum, formatDate, ActionType };
