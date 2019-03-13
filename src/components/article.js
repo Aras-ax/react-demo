@@ -1,39 +1,35 @@
 import React from "react";
 import "./article.scss";
-import { getComments, getArticles } from "../api/index";
+import { getComments, getArticles, setArticle } from "../api/index";
 import { formatNum, ActionType } from "../lib";
 // formatDate
-class WriteArticle extends React.Component {
-  constructor() {
-    super();
+function WriteArticle(props) {
+  return (
+    <div className="content-publish">
+      <input
+        type="text"
+        className="content-input"
+        placeholder="写下你的标题"
+        value={props.title}
+        onChange={props.onChange}
+        onChange={(e) => {
+          props.onChange('title', e);
+        }}
+      />
+      <textarea
+        cols="30"
+        rows="5"
+        className="content-input mid"
+        placeholder="记录美好生活..."
+        value={props.content}
+        onChange={(e) => {
+          props.onChange('content', e);
+        }}
+      />
 
-    this.state = {
-      title: "",
-      content: ""
-    };
-  }
-
-  render() {
-    return (
-      <div className="content-publish">
-        <input
-          type="text"
-          className="content-input"
-          placeholder="写下你的标题"
-        />
-        <textarea
-          name=""
-          id=""
-          cols="30"
-          rows="5"
-          className="content-input mid"
-          placeholder="记录美好生活..."
-        />
-
-        <button className="btn-submit">发布</button>
-      </div>
-    );
-  }
+      <button onClick={props.onSubmit} className="btn-submit">发布</button>
+    </div>
+  );
 }
 
 // class Article extends React.Component {
@@ -98,6 +94,7 @@ function Article(props) {
           </button>
           <button
             type="button"
+            onClick={props.onShowOff}
             className="Button contentItem-action Button--plain Button--withIcon Button--withLabel"
           >
             <span className="logo-svg">
@@ -115,7 +112,7 @@ function Article(props) {
                 />
               </svg>
             </span>
-            {props.comment} 条评论
+            {props.showComments ? "收起评论" : `${props.comment}条评论`}
           </button>
           <button
             type="button"
@@ -329,7 +326,7 @@ function CommentList(props) {
       return comments.push(<Comment key={comment.ID} {...comment} />);
     });
   } else {
-    comments = [<div>暂无评论!</div>];
+    comments = [<div key="noData">暂无评论!</div>];
   }
   return <div className="comment-list">{comments}</div>;
 }
@@ -346,6 +343,9 @@ class ArticleComment extends React.Component {
 
   toggleComments() {
     this.setState(preState => {
+      if (!preState.showComments) {
+        this.loadData();
+      }
       return {
         showComments: !preState.showComments
       };
@@ -364,24 +364,20 @@ class ArticleComment extends React.Component {
       });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.showComments) {
-      this.loadData();
-    }
-  }
-
   render() {
     let { onLike, onAction, ID, ...articleProps } = this.props;
     return (
       <div className="article">
         <Article
           {...articleProps}
+          showComments={this.state.showComments}
           onLike={type => {
             onLike(type, ID);
           }}
           onAction={type => {
             onAction(type, ID);
           }}
+          onShowOff={this.toggleComments}
         />
         {this.state.showComments && (
           <CommentList comments={this.state.comments} />
@@ -395,11 +391,14 @@ class Content extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      articles: []
+      articles: [],
+      title: '',
+      content: ''
     };
 
     this.idToIndex = {};
-    this.loadData = this.loadData.bind(this);
+    this.submit = this.submit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   loadData() {
@@ -455,6 +454,28 @@ class Content extends React.Component {
     }
   }
 
+  submit() {
+    if (this.state.title && this.state.content) {
+      setArticle(this.state).then(data => {
+        console.log('添加成功!');
+        this.loadData();
+      }).then(err => {
+        console.log('添加失败');
+      }).finally(() => {
+        this.setState({
+          title: '',
+          content: ''
+        });
+      });
+    }
+  }
+
+  handleChange(type, e) {
+    this.setState({
+      [type]: e.target.value
+    });
+  }
+
   componentDidMount() {
     this.loadData();
   }
@@ -462,7 +483,7 @@ class Content extends React.Component {
   render() {
     return (
       <div className="content-box">
-        <WriteArticle onSubmit={this.loadData} />
+        <WriteArticle onChange={this.handleChange} onSubmit={this.submit} />
 
         {this.state.articles.map(article => {
           return (
