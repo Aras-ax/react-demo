@@ -58,5 +58,33 @@ module.exports = {
         })()
       }
     ]
+  },
+  getArticles: {
+    "articles|2-5": [
+      {
+        "ID|+1": 1,
+        title: "@title(1,10)",
+        content: "@paragraph(1,10)",
+        "like|-100-2000": 1,
+        "comment|1-100": 1,
+        "thank|2": false,
+        "collection|1": true
+      }
+    ]
+  },
+  getComments: {
+    refresh: true,
+    template: {
+      "comments|1-10": [
+        {
+          "ID|+1": 1,
+          userName: "@word()",
+          date: "@date('yyyy-MM-dd')",
+          content: "@sentence(2,20)",
+          "like|-100-2000": 1,
+          "diss|1": true
+        }
+      ]
+    }
   }
 };

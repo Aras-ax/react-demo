@@ -7,6 +7,7 @@ function ProductRow(props) {
     <div className="flex product-row">
       <div className="row-title">{props.name}</div>
       <div className="row-data">{props.price}</div>
+      <div className="row-data">{props.stocked.toString()}</div>
     </div>
   );
 }
@@ -29,6 +30,7 @@ function ProductTable(props) {
                 key={goods.name}
                 name={goods.name}
                 price={goods.price}
+                stocked={goods.stocked}
               />
             );
           })}
@@ -42,6 +44,7 @@ function ProductTable(props) {
       <div className="table-header flex">
         <div className="row-title">Name</div>
         <div className="row-data">Price</div>
+        <div className="row-data">Stocked</div>
       </div>
       {htmlCode}
     </div>
@@ -54,7 +57,7 @@ class SearchBar extends React.Component {
       <div className="search-bar">
         <input
           type="text"
-          placeholder="search"
+          placeholder="Search By Name..."
           value={this.props.filter}
           className="search-input"
           onChange={this.props.onInput}
@@ -119,7 +122,7 @@ class FilterableProductTable extends React.Component {
     let products = this.handleData();
 
     return (
-      <div>
+      <div className="goods-wrapper">
         <SearchBar
           stocked={this.state.stocked}
           filter={this.state.filter}

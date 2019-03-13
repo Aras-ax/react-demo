@@ -3,42 +3,60 @@
     font-weight: bold;
 }
 
+.table-header {
+    border-bottom: 2px solid #333;
+    padding-bottom: 4px;
+}
+
+.category {
+    padding: 8px 0 2px;
+    border-bottom: 1px solid #333;
+}
+
+.goods-wrapper {
+    width: 694px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.content-input {}
+
 .row-title {
-    width: 100px;
+    width: 200px;
 }
 
 .row-data {
     flex: 1;
 }
 
-.product-table,
-.search-bar {
-    width: 300px;
+.product-table {
+    width: 100%;
 }
 
 .search-bar {
-    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .search-input {
-    background-color: #fff;
-    background-position: right 8px center;
-    background-repeat: no-repeat;
     border: 1px solid #d1d5da;
     border-radius: 3px;
-    box-shadow: inset 0 1px 2px rgba(27, 31, 35, .075);
+    background-color: #FFFFFF;
+    padding: 10px 12px;
+    background-color: #fff;
     color: #24292e;
-    font-size: 16px;
-    line-height: 20px;
-    min-height: 34px;
-    outline: none;
-    padding: 6px 8px;
-    vertical-align: middle;
+    width: 300px;
 }
 
 .serach-flag {
-    display: block;
+    display: flex;
     cursor: pointer;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    height: 24px;
+    margin-bottom: 20px;
 }
 
 .serach-flag input {

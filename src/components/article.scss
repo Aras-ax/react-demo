@@ -1,0 +1,203 @@
+.content-box {
+    width: 694px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.content-publish {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #EBEBEB;
+}
+
+.content-input {
+    border: 1px solid #d1d5da;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    padding: 10px 12px;
+
+    &.mid {
+        margin: 10px 0 20px;
+    }
+}
+
+.btn-submit {
+    width: 100px;
+    color: #0084ff;
+    background-color: #e5f2ff;
+    border: 1px solid #add6ff;
+    font-size: 14px;
+    padding: 8px;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.article {
+    margin: 40px 0;
+}
+
+.contentItem {
+    margin-bottom: 10px;
+}
+
+.contentItem-title {
+    font-size: 18px;
+    font-weight: 600;
+    font-synthesis: style;
+    line-height: 1.6;
+    color: #1A1A1A;
+    margin-top: -4px;
+    margin-bottom: -4px;
+}
+
+.richcontent {
+    line-height: 1.67;
+}
+
+.richcontent-inner {
+    max-height: 92px;
+    margin-top: 16px;
+    overflow: hidden;
+}
+
+.contentItem-actions {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    margin: 0 -20px -10px;
+    color: #646464;
+    background: #FFFFFF;
+    clear: both;
+}
+
+.Button {
+    display: inline-block;
+    padding: 0 16px;
+    font-size: 14px;
+    line-height: 32px;
+    color: #8590A6;
+    text-align: center;
+    cursor: pointer;
+    background: none;
+    border: 1px solid;
+    border-radius: 3px;
+}
+
+.VoteButton {
+    line-height: 30px;
+    padding: 0 12px;
+    color: #0084FF;
+    background: rgba(0, 132, 255, 0.1);
+    border-color: transparent;
+}
+
+.VoteButton--down {
+    margin-left: 4px;
+}
+
+.TriangleUp {
+    margin-right: 5px;
+}
+
+.logo-svg {
+    display: inline-flex;
+    align-items: center;
+}
+
+.Button--plain,
+.Button--link {
+    height: auto;
+    padding: 0;
+    line-height: inherit;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+.contentItem-action {
+    margin-left: 24px;
+    font-size: 14px;
+}
+
+.Button--withIcon.Button--plain,
+.Button--withIcon.Button--link {
+    padding: 0;
+}
+
+.Button--withIcon.Button--withLabel .Button-zi {
+    margin-right: 4px;
+}
+
+.commentItem {
+    position: relative;
+    flex-shrink: 0;
+    padding: 12px 20px 10px;
+    font-size: 15px;
+}
+
+.commentItem {
+    border-top: 1px solid #EBEBEB;
+}
+
+.commentItem-meta {
+    position: relative;
+    height: 24px;
+    padding-right: 3px;
+    padding-left: 1px;
+    margin-bottom: 4px;
+    line-height: 24px;
+}
+
+.commentItem-avatar {
+    margin-right: 8px;
+
+    .avatar {
+        display: block;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        font-size: 12px;
+        color: white;
+        border-radius: 50%;
+        background-color: #0084ff;
+    }
+}
+
+.commentItem-name {
+    margin-right: auto;
+}
+
+.commentItem-time {
+    font-size: 14px;
+    color: #8590A6;
+}
+
+.commentItem-metaSibling {
+    padding-left: 33px;
+}
+
+.commentItem-content {
+    margin-bottom: 6px;
+    line-height: 25px;
+}
+
+.ztext {
+    word-break: break-word;
+    line-height: 1.6;
+}
+
+.commentItem-footer {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    font-size: 14px;
+    line-height: 24px;
+    margin-top: 4px;
+}
+
+.commentItem-footer .Button+.Button {
+    margin-left: 20px;
+}
