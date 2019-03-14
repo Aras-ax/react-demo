@@ -106,7 +106,8 @@ class FilterableProductTable extends React.Component {
       let category = product.category;
 
       if (stocked === false || product.stocked) {
-        if (filter === "" || product.name.indexOf(filter) > -1) {
+        let reg = new RegExp(filter, "ig");
+        if (filter === "" || product.name.match(reg)) {
           if (!outData[category]) {
             outData[category] = [];
           }

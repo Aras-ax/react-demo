@@ -11,33 +11,30 @@ function WriteArticle(props) {
         className="content-input"
         placeholder="写下你的标题"
         value={props.title}
-        onChange={props.onChange}
-        onChange={(e) => {
-          props.onChange('title', e);
+        onChange={e => {
+          props.onChange("title", e);
         }}
       />
       <textarea
         cols="30"
         rows="5"
+        resize="none"
         className="content-input mid"
         placeholder="记录美好生活..."
         value={props.content}
-        onChange={(e) => {
-          props.onChange('content', e);
+        style={{ resize: "none" }}
+        onChange={e => {
+          props.onChange("content", e);
         }}
       />
 
-      <button onClick={props.onSubmit} className="btn-submit">发布</button>
+      <button onClick={props.onSubmit} className="btn-submit">
+        发布
+      </button>
     </div>
   );
 }
 
-// class Article extends React.Component {
-// constructor(props) {
-//   super(props);
-// }
-
-// render() {
 function Article(props) {
   let likeText = `赞同 ${formatNum(props.like)}`;
   return (
@@ -145,7 +142,8 @@ function Article(props) {
             <span className="logo-svg">
               &#8203;
               <svg
-                className="Zi Zi--Star Button-zi"
+                className={`Zi Zi--Star Button-zi ${props.collection &&
+                  "blue"}`}
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 width="1.2em"
@@ -169,7 +167,7 @@ function Article(props) {
             <span className="logo-svg">
               &#8203;
               <svg
-                className="Zi Zi--Heart Button-zi"
+                className={`Zi Zi--Heart Button-zi ${props.thank && "red"}`}
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 width="1.2em"
@@ -392,8 +390,8 @@ class Content extends React.Component {
     super(props);
     this.state = {
       articles: [],
-      title: '',
-      content: ''
+      title: "",
+      content: ""
     };
 
     this.idToIndex = {};
@@ -456,17 +454,19 @@ class Content extends React.Component {
 
   submit() {
     if (this.state.title && this.state.content) {
-      setArticle(this.state).then(data => {
-        console.log('添加成功!');
-        this.loadData();
-      }).then(err => {
-        console.log('添加失败');
-      }).finally(() => {
-        this.setState({
-          title: '',
-          content: ''
+      setArticle(this.state)
+        .then(data => {
+          console.log("添加成功!");
+          this.loadData();
+
+          this.setState({
+            title: "",
+            content: ""
+          });
+        })
+        .then(err => {
+          console.log("添加失败");
         });
-      });
     }
   }
 
@@ -483,7 +483,12 @@ class Content extends React.Component {
   render() {
     return (
       <div className="content-box">
-        <WriteArticle onChange={this.handleChange} onSubmit={this.submit} />
+        <WriteArticle
+          title={this.state.title}
+          content={this.state.content}
+          onChange={this.handleChange}
+          onSubmit={this.submit}
+        />
 
         {this.state.articles.map(article => {
           return (

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router, Route, Link, hashHistory } from "react-router";
+import { Router, Route, Link, hashHistory, IndexRoute } from "react-router";
 import Article from "./components/article";
 import Game from "./components/game";
 import Product from "./components/search";
@@ -18,17 +18,17 @@ class App extends React.Component {
             <ul className="nav flex">
               <li>
                 <Link className="flex" to="/article" activeClassName="active">
-                  ZhiHu
+                  Article
                 </Link>
               </li>
               <li>
                 <Link className="flex" to="/Game" activeClassName="active">
-                  Game
+                  Game Center
                 </Link>
               </li>
               <li>
                 <Link className="flex" to="/product" activeClassName="active">
-                  GoodsList
+                  Products
                 </Link>
               </li>
             </ul>
@@ -36,7 +36,7 @@ class App extends React.Component {
         </header>
         <div className="content"> {this.props.children} </div>
         <footer className="footer">
-          Copyright© 2019
+          Copyright© 2019{" "}
           <a href="https://github.com/moshang-xc" target="github">
             Moshang
           </a>
@@ -46,9 +46,18 @@ class App extends React.Component {
   }
 }
 
+function About() {
+  return (
+    <div>
+      <h2>Moshang</h2>
+    </div>
+  );
+}
+
 ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={App}>
+      <IndexRoute component={About} />
       <Route path="article" component={Article} />
       <Route path="game" component={Game} />
       <Route path="product" component={Product} />

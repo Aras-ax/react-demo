@@ -10,7 +10,7 @@ module.exports = {
    */
   middleWare: {
     api: "/setArticle",
-    callback: function (req, res, next, server) {
+    callback: function(req, res, next, server) {
       console.log("中间件，劫持请求 /setArticle");
       let data = req.body;
       server
@@ -20,7 +20,7 @@ module.exports = {
           data.like = 0;
           data.comment = 0;
           data.thank = false;
-          data.collection = true;
+          data.collection = false;
           result.articles.unshift(data);
           server.updateData("getArticles", result);
           res.send("ok");
@@ -31,9 +31,4 @@ module.exports = {
         });
     }
   }
-  ,
-  /**
-   * Moc扩展
-   */
-  mockExtend: {}
 };

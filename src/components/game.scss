@@ -1,0 +1,130 @@
+.game-box {
+    display: flex;
+
+    .game-left {
+        width: 750px;
+        padding-right: 20px;
+        box-sizing: border-box;
+    }
+
+    .game-right {
+        flex: 1;
+    }
+}
+
+.tic-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-left: 1em;
+}
+
+.tic-box {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.tic-bar {
+    padding: 12px 0;
+    height: 34px;
+    line-height: 34px;
+}
+
+.step {
+    color: #0084ff;
+    background-color: #e5f2ff;
+    border: 1px solid #add6ff;
+    display: block;
+    margin-bottom: 6px;
+    padding: 2px 1em;
+    cursor: pointer;
+}
+
+.square-box {
+    display: inline-block;
+
+    .square-row {
+        display: flex;
+        width: 102px;
+    }
+
+
+    .red {
+        color: #4ab3ff;
+    }
+
+    .square:focus {
+        outline: none;
+    }
+}
+
+.square {
+    background: #fff;
+    border: 1px solid #999;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    height: 34px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 34px;
+    cursor: pointer;
+
+    &.active {
+        color: #4ab3ff;
+    }
+}
+
+.gomoku-box {
+    display: block;
+
+    .square-row {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+
+    .gomoku-bar {
+        padding: 12px 0;
+
+        button,
+        label {
+            width: 100px;
+            color: #0084ff;
+            background-color: #e5f2ff;
+            border: 1px solid #add6ff;
+            font-size: 14px;
+            padding: 8px;
+            align-self: flex-end;
+            cursor: pointer;
+        }
+
+        label {
+            border: 1px solid #fff;
+            background-color: #fff;
+            width: 180px;
+            padding: 8px 0;
+            box-sizing: border-box;
+            float: right;
+            cursor: default;
+        }
+    }
+
+    .game-box {
+        width: 100%;
+        display: flex;
+    }
+
+    .square-box {
+        flex: 1;
+    }
+
+    .step-box {
+        width: 180px;
+        margin: 0;
+        padding: 0;
+    }
+}

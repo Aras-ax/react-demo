@@ -6,7 +6,7 @@ module.exports = {
         "category|1": ["Sporting Goods", "Electronics", "Clothes", "Fruits"],
         "price|10-100.1-2": 49.99,
         "stocked|1": true,
-        name: (function () {
+        name: (function() {
           let obj = {
             "Sporting Goods": [
               "Football",
@@ -52,7 +52,7 @@ module.exports = {
               "Orange"
             ]
           };
-          return function () {
+          return function() {
             return obj[this.category].pop() || "unKnow";
           };
         })()
