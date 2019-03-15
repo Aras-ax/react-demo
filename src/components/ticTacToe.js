@@ -51,7 +51,7 @@ class Board extends React.Component {
   }
 }
 
-class TicTacToe extends React.Component {
+class TicTacToe extends React.PureComponent {
   constructor() {
     super();
     this.state = {
@@ -79,14 +79,15 @@ class TicTacToe extends React.Component {
 
     let user = this.user[this.state.curStep % 2];
     list[i] = user;
-    let history = this.state.history.slice();
-    history.push({
-      list,
-      desc: `${user} Moves To ${i + 1}`
-    });
 
     this.setState((prevState, props) => ({
-      history,
+      history: [
+        ...prevState.history,
+        {
+          list,
+          desc: `${user} Moves To ${i + 1}`
+        }
+      ],
       curStep: prevState.curStep + 1
     }));
   }

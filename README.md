@@ -31,20 +31,20 @@ npm start
 
 ### 类似博客模块
 
-![article](./public/img/article.gif)
+![类似博客模块](./public/img/article.gif)
 
 该模块主要包含文章的发表，点赞，取消点赞，收藏，感谢，查看评论等功能，只是一些简单的实现，还有很多不足。文章发布后可以与本地服务器进行通信，实时的更新界面数据显示。点赞等数据没有与服务器交互，只是修改了本地缓存的数据源。点击评论可以展开/收缩评论列表，评论数据实时从服务器获取，评论数据每次获取的都是通过`Mock`重新生成的，所以每次的结果都不一样。
 
 ### 五子棋游戏
 
-![article](./public/img/game.gif)
+![五子棋游戏](./public/img/game.gif)
 该模块实现了`五子棋`和`井字游戏`两个游戏。
 
 游戏的过程中可以悔棋，可以重新开始游戏，悔棋，点击右侧相应的步数信息 button 即可。`五子棋`游戏只记录了最近 20 步的数据，20 步以前的数据不会记录，故悔棋只可悔 20 步以内的棋。当游戏结束，成功的一方的五个连线棋子会高亮显示。
 
 ### React 理念示例
 
-![article](./public/img/products.gif)
+![React 理念示例](./public/img/products.gif)
 
 以上所有的数据都是通过本地服务器[mock-mini-server](https://github.com/moshang-xc/mock-mini-server)提供，通过扩展[mock]()实现一些数据交互功能。
 
